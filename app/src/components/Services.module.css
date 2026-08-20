@@ -1,0 +1,272 @@
+.section {
+  background: var(--white);
+  position: relative;
+}
+
+.head {
+  display: grid;
+  gap: clamp(1.4rem, 3vw, 2.4rem);
+  align-items: end;
+  margin-bottom: clamp(2rem, 4vw, 3rem);
+}
+
+@media (min-width: 900px) {
+  .head {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 0.85fr);
+  }
+}
+
+.title {
+  font-size: var(--step-h2);
+  font-weight: 300;
+  font-variation-settings: 'opsz' 40;
+  margin-top: 0.7rem;
+}
+
+/* The chip row scrolls sideways on narrow screens, so the result count sits
+   outside it and stays on screen. */
+.filterBlock {
+  display: grid;
+  gap: 0.7rem;
+  justify-items: start;
+}
+
+@media (min-width: 900px) {
+  .filterBlock {
+    justify-items: end;
+  }
+}
+
+.filters {
+  display: flex;
+  gap: 0.5rem;
+  width: 100%;
+  overflow-x: auto;
+  padding-bottom: 0.4rem;
+  margin-inline: calc(var(--gutter) * -1);
+  padding-inline: var(--gutter);
+  scrollbar-width: none;
+}
+
+.filters::-webkit-scrollbar {
+  display: none;
+}
+
+@media (min-width: 640px) {
+  .filters {
+    flex-wrap: wrap;
+    overflow: visible;
+    margin-inline: 0;
+    padding-inline: 0;
+  }
+}
+
+@media (min-width: 900px) {
+  .filters {
+    justify-content: flex-end;
+  }
+}
+
+.chip {
+  flex: 0 0 auto;
+  appearance: none;
+  border: 1px solid var(--line-strong);
+  background: transparent;
+  color: var(--text-soft);
+  border-radius: var(--radius-pill);
+  padding: 0.55rem 1.05rem;
+  font-size: 0.82rem;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+  transition:
+    background-color var(--dur-fast) var(--ease),
+    color var(--dur-fast) var(--ease),
+    border-color var(--dur-fast) var(--ease);
+}
+
+.chip:hover {
+  border-color: var(--rose-deep);
+  color: var(--ink);
+}
+
+.chipOn {
+  background: var(--espresso);
+  border-color: var(--espresso);
+  color: var(--cream);
+}
+
+.chipOn:hover {
+  color: var(--cream);
+  border-color: var(--espresso);
+}
+
+.count {
+  margin: 0;
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+.grid {
+  display: grid;
+  gap: clamp(1rem, 1.8vw, 1.35rem);
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 285px), 1fr));
+  align-items: stretch;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-m);
+  background: var(--white);
+  padding: clamp(1.3rem, 2.2vw, 1.7rem);
+  transition:
+    border-color var(--dur) var(--ease),
+    transform var(--dur) var(--ease),
+    box-shadow var(--dur) var(--ease);
+}
+
+.card:hover {
+  border-color: var(--rose);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-soft);
+}
+
+.cardFeatured {
+  background: linear-gradient(168deg, var(--blush) 0%, #fbf5f2 62%, var(--white) 100%);
+  border-color: rgba(200, 161, 156, 0.45);
+}
+
+.cardTop {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.name {
+  font-size: var(--step-h3);
+  font-weight: 400;
+  font-variation-settings: 'opsz' 24;
+  letter-spacing: -0.012em;
+  line-height: 1.18;
+}
+
+.price {
+  font-family: var(--font-display);
+  font-size: 1.42rem;
+  font-weight: 400;
+  color: var(--rose-ink);
+  line-height: 1;
+  white-space: nowrap;
+  padding-top: 0.15rem;
+}
+
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem 0.85rem;
+  margin-top: 0.85rem;
+  font-size: 0.79rem;
+  letter-spacing: 0.045em;
+  color: var(--text-muted);
+}
+
+.meta span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.blurb {
+  margin-top: 0.9rem;
+  font-size: 0.945rem;
+  line-height: 1.6;
+  color: var(--text-soft);
+}
+
+.cardFoot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.6rem;
+  margin-top: auto;
+  padding-top: 1.15rem;
+}
+
+.warnToggle {
+  appearance: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  border: 1px solid rgba(177, 139, 95, 0.4);
+  background: rgba(177, 139, 95, 0.09);
+  color: #7d5f37;
+  border-radius: var(--radius-pill);
+  padding: 0.5rem 0.85rem;
+  font-size: 0.76rem;
+  letter-spacing: 0.05em;
+  min-height: 42px;
+  transition: background-color var(--dur-fast) var(--ease), border-color var(--dur-fast) var(--ease);
+}
+
+.warnToggle:hover {
+  background: rgba(177, 139, 95, 0.16);
+  border-color: rgba(177, 139, 95, 0.7);
+}
+
+.warnPanel {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows var(--dur) var(--ease);
+}
+
+.warnPanelOpen {
+  grid-template-rows: 1fr;
+}
+
+/* Collapsed guidance is hidden from assistive tech too, not just visually.
+   The visibility flip is delayed so the height transition can finish. */
+.warnInner {
+  overflow: hidden;
+  visibility: hidden;
+  transition: visibility 0s linear var(--dur);
+}
+
+.warnPanelOpen .warnInner {
+  visibility: visible;
+  transition-delay: 0s;
+}
+
+.warnBody {
+  margin-top: 0.9rem;
+  border-left: 2px solid rgba(177, 139, 95, 0.55);
+  padding: 0.15rem 0 0.15rem 0.9rem;
+  font-size: 0.875rem;
+  line-height: 1.58;
+  color: var(--text-soft);
+}
+
+.warnBody strong {
+  display: block;
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 1rem;
+  color: var(--ink);
+  margin-bottom: 0.35rem;
+}
+
+.warnBody p + p {
+  margin-top: 0.5rem;
+  color: var(--text-muted);
+  font-size: 0.82rem;
+}
+
+.empty {
+  padding: 2.5rem 0;
+  color: var(--text-muted);
+}

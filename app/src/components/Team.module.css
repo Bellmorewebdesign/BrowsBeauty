@@ -1,0 +1,171 @@
+.section {
+  background: linear-gradient(180deg, var(--white) 0%, #fbf7f2 100%);
+}
+
+.head {
+  max-width: 42rem;
+  margin-bottom: clamp(2.2rem, 4.5vw, 3.4rem);
+}
+
+.title {
+  font-size: var(--step-h2);
+  font-weight: 300;
+  font-variation-settings: 'opsz' 40;
+  margin-top: 0.7rem;
+}
+
+.headLead {
+  margin-top: 1rem;
+  font-size: var(--step-lead);
+  color: var(--text-soft);
+}
+
+.grid {
+  display: grid;
+  gap: clamp(2.5rem, 6vw, 5rem);
+}
+
+/* Each artist becomes a full width editorial row, mirrored for the second one,
+   so the pair uses the desktop width instead of two tall stacked columns. */
+.card {
+  display: grid;
+  gap: clamp(1.2rem, 2.4vw, 1.8rem);
+  align-content: start;
+}
+
+@media (min-width: 820px) {
+  .card {
+    grid-template-columns: minmax(0, 0.78fr) minmax(0, 1fr);
+    column-gap: clamp(2rem, 4.5vw, 4rem);
+    row-gap: 1.1rem;
+    align-items: center;
+  }
+
+  .figure {
+    grid-column: 1;
+    grid-row: 1 / span 4;
+  }
+
+  .card:nth-child(even) .figure {
+    grid-column: 2;
+  }
+
+  .card:nth-child(even) > *:not(.figure) {
+    grid-column: 1;
+  }
+}
+
+.figure {
+  position: relative;
+  margin: 0;
+  border-radius: var(--radius-l) var(--radius-l) var(--radius-m) var(--radius-m);
+  overflow: hidden;
+  aspect-ratio: 4 / 5;
+  max-height: 34rem;
+  background: var(--sand);
+}
+
+.figure img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 900ms var(--ease-out);
+}
+
+.card:hover .figure img {
+  transform: scale(1.035);
+}
+
+.focusTag {
+  position: absolute;
+  left: 1rem;
+  bottom: 1rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.5rem 0.95rem;
+  border-radius: var(--radius-pill);
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(6px);
+  color: var(--brown-deep);
+  font-size: 0.72rem;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+.nameRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.5rem 1rem;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 0.75rem;
+}
+
+.name {
+  font-size: clamp(1.6rem, 2.8vw, 2.1rem);
+  font-weight: 300;
+  font-variation-settings: 'opsz' 30;
+}
+
+.role {
+  font-size: 0.76rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--rose-ink);
+}
+
+.bio {
+  font-size: 0.97rem;
+  line-height: 1.62;
+  color: var(--text-soft);
+  max-width: 56ch;
+}
+
+.soon {
+  margin-top: 0.7rem;
+  font-size: 0.9rem;
+  color: var(--brown-deep);
+  font-style: italic;
+}
+
+.skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.skill {
+  border: 1px solid var(--line);
+  border-radius: var(--radius-pill);
+  padding: 0.42rem 0.85rem;
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  color: var(--text-muted);
+  background: var(--white);
+}
+
+.availability {
+  display: flex;
+  gap: 0.6rem;
+  align-items: flex-start;
+  font-size: 0.86rem;
+  line-height: 1.5;
+  color: var(--brown-deep);
+  background: rgba(200, 161, 156, 0.13);
+  border-radius: var(--radius-m);
+  padding: 0.8rem 0.95rem;
+}
+
+.availability svg {
+  flex: 0 0 auto;
+  margin-top: 0.16rem;
+  color: var(--rose-deep);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}

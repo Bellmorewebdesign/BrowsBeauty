@@ -1,0 +1,71 @@
+.switch {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-pill);
+  padding: 3px;
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(6px);
+}
+
+.dark.switch {
+  border-color: var(--line-dark);
+  background: rgba(245, 239, 230, 0.08);
+}
+
+.option {
+  appearance: none;
+  border: 0;
+  background: transparent;
+  color: var(--text-muted);
+  font-size: 0.74rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  padding: 0.36rem 0.7rem;
+  border-radius: var(--radius-pill);
+  line-height: 1;
+  transition:
+    background-color var(--dur-fast) var(--ease),
+    color var(--dur-fast) var(--ease);
+}
+
+.dark .option {
+  color: var(--on-dark-soft);
+}
+
+.option:hover {
+  color: var(--ink);
+}
+
+.dark .option:hover {
+  color: var(--on-dark);
+}
+
+.active {
+  background: var(--espresso);
+  color: var(--cream);
+}
+
+.active:hover {
+  color: var(--cream);
+}
+
+.dark .active {
+  background: var(--cream);
+  color: var(--espresso);
+}
+
+.dark .active:hover {
+  color: var(--espresso);
+}
+
+.sep {
+  width: 1px;
+  height: 13px;
+  background: var(--line-strong);
+  margin-inline: 1px;
+}
+
+.dark .sep {
+  background: var(--line-dark);
+}

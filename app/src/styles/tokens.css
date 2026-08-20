@@ -1,0 +1,66 @@
+:root {
+  /* Palette grown out of the studio's existing dusty rose, cream and brown. */
+  --white: #ffffff;
+  --cream: #f5efe6;
+  --cream-2: #efe6da;
+  --sand: #e3d7c7;
+  --blush: #f7ebe7;
+  --rose: #c8a19c;
+  --rose-deep: #ab7f79;
+  /* Darkened rose for small text on light grounds: the brand rose itself only
+     reaches about 3:1 against cream, which is below the 4.5:1 body-text bar. */
+  --rose-ink: #8a5d57;
+  --rose-soft: #e0c5c0;
+  --brown: #91766e;
+  --brown-deep: #614c46;
+  --espresso: #2f2422;
+  --espresso-2: #241b1a;
+  --ink: #1b1413;
+
+  --text: #241d1b;
+  --text-soft: #5d4b45;
+  --text-muted: #6f5b55;
+  --on-dark: #f5efe6;
+  --on-dark-soft: #cfbcb5;
+  --line: rgba(97, 76, 70, 0.16);
+  --line-strong: rgba(97, 76, 70, 0.3);
+  --line-dark: rgba(245, 239, 230, 0.18);
+
+  --font-display: 'Fraunces', 'Iowan Old Style', Georgia, 'Times New Roman', serif;
+  --font-body: 'Jost', 'Avenir Next', 'Segoe UI', system-ui, -apple-system, sans-serif;
+
+  --step-display: clamp(2.6rem, 6.6vw, 4.9rem);
+  --step-h2: clamp(2.05rem, 4.4vw, 3.5rem);
+  --step-h3: clamp(1.2rem, 1.9vw, 1.65rem);
+  --step-lead: clamp(1.05rem, 1.35vw, 1.28rem);
+  --step-body: clamp(1rem, 1.05vw, 1.09rem);
+  --step-small: 0.875rem;
+  --step-eyebrow: 0.72rem;
+
+  --maxw: 1340px;
+  --measure: 62ch;
+  --gutter: clamp(1.25rem, 4.4vw, 4.5rem);
+  --section-y: clamp(4.5rem, 9vw, 8.5rem);
+
+  --radius-m: 10px;
+  --radius-l: 20px;
+  --radius-pill: 999px;
+
+  --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --ease-out: cubic-bezier(0.16, 0.84, 0.44, 1);
+  --dur-fast: 220ms;
+  --dur: 420ms;
+  --dur-slow: 680ms;
+  --dur-hero: 1000ms;
+
+  --shadow-soft: 0 18px 46px -28px rgba(59, 43, 39, 0.45);
+  --shadow-lift: 0 26px 60px -34px rgba(59, 43, 39, 0.55);
+
+  --header-h: 68px;
+}
+
+@media (min-width: 900px) {
+  :root {
+    --header-h: 82px;
+  }
+}
