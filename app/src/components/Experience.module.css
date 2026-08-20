@@ -1,0 +1,306 @@
+/* No `overflow` here on purpose: any overflow value other than visible turns
+   this section into a scroll container and the sticky visual column stops
+   sticking. The decorative gradient below is inset, so nothing escapes. */
+.section {
+  background: linear-gradient(178deg, var(--espresso) 0%, var(--espresso-2) 100%);
+  color: var(--on-dark-soft);
+  position: relative;
+}
+
+.section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(60% 44% at 82% 8%, rgba(200, 161, 156, 0.2), transparent 66%);
+}
+
+.head {
+  position: relative;
+  max-width: 46rem;
+  margin-bottom: clamp(2.4rem, 5vw, 4rem);
+}
+
+.title {
+  font-size: var(--step-h2);
+  font-weight: 300;
+  font-variation-settings: 'opsz' 40;
+  margin-top: 0.7rem;
+}
+
+.headLead {
+  margin-top: 1rem;
+  font-size: var(--step-lead);
+  color: var(--on-dark-soft);
+  max-width: 48ch;
+}
+
+.body {
+  position: relative;
+  display: grid;
+  gap: clamp(1.6rem, 3vw, 3.5rem);
+}
+
+@media (min-width: 900px) {
+  .body {
+    grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
+    /* The visual column has to fill the row so its sticky child can stay
+       pinned for the whole scroll of the steps beside it. */
+    align-items: stretch;
+  }
+}
+
+/* ---------- sticky visual (desktop only) ------------------------------- */
+
+.visualCol {
+  display: none;
+}
+
+@media (min-width: 900px) {
+  .visualCol {
+    display: block;
+    height: 100%;
+  }
+}
+
+/* Centred in the viewport so the pinned visual lines up with whichever step is
+   currently active, without ever tucking under the sticky header. */
+.sticky {
+  position: sticky;
+  top: max(calc(var(--header-h) + 1.5rem), calc(50vh - min(33vh, 270px)));
+  height: min(66vh, 540px);
+}
+
+.stack {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: var(--radius-l);
+  overflow: hidden;
+  border: 1px solid var(--line-dark);
+}
+
+.panel {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transform: scale(1.035);
+  transition:
+    opacity var(--dur-slow) var(--ease),
+    transform 900ms var(--ease-out);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.panelOn {
+  opacity: 1;
+  transform: none;
+}
+
+/* ---------- shared panel skins ----------------------------------------- */
+
+.skin {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+
+.skin img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.skinArt {
+  width: 88%;
+  max-width: 440px;
+  color: var(--espresso);
+  opacity: 0.72;
+}
+
+.skinBlush {
+  background: linear-gradient(152deg, var(--blush) 0%, #f0dcd6 100%);
+}
+
+.skinRose {
+  background: linear-gradient(148deg, #e6cdc8 0%, var(--rose) 100%);
+}
+
+.skinDeep {
+  background: linear-gradient(150deg, #3a2c29 0%, #241b1a 100%);
+  padding: clamp(1.5rem, 3vw, 2.6rem);
+  text-align: center;
+}
+
+.deepInner {
+  display: grid;
+  gap: 1.2rem;
+  justify-items: center;
+}
+
+.deepInner img {
+  width: min(74%, 280px);
+  height: auto;
+}
+
+.deepLine {
+  width: 130px;
+  color: var(--rose-soft);
+  opacity: 0.85;
+}
+
+.caption {
+  position: relative;
+  z-index: 2;
+  margin: 0;
+  padding: clamp(1rem, 2vw, 1.4rem) clamp(1.1rem, 2.2vw, 1.6rem);
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--on-dark);
+  background: linear-gradient(to top, rgba(26, 19, 18, 0.86), rgba(26, 19, 18, 0));
+}
+
+/* ---------- steps ------------------------------------------------------ */
+
+.stepsWrap {
+  position: relative;
+  padding-left: clamp(1.9rem, 3vw, 2.6rem);
+}
+
+.steps {
+  position: relative;
+}
+
+.rail {
+  position: absolute;
+  left: 6px;
+  top: 0.6rem;
+  bottom: 0.6rem;
+  width: 1px;
+  background: var(--line-dark);
+}
+
+.railFill {
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 0%;
+  background: linear-gradient(to bottom, var(--rose-soft), var(--rose));
+  transform-origin: top;
+  transition: height 140ms linear;
+}
+
+.step {
+  position: relative;
+  padding-block: clamp(1.6rem, 4vw, 3.4rem);
+}
+
+@media (min-width: 900px) {
+  .step {
+    min-height: 56vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+}
+
+.dot {
+  position: absolute;
+  left: calc(clamp(1.9rem, 3vw, 2.6rem) * -1 + 1px);
+  top: calc(clamp(1.6rem, 4vw, 3.4rem) + 0.55rem);
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  border: 1px solid var(--rose-soft);
+  background: var(--espresso);
+  transition:
+    background-color var(--dur) var(--ease),
+    transform var(--dur) var(--ease);
+}
+
+@media (min-width: 900px) {
+  .dot {
+    top: 50%;
+    margin-top: -5.5px;
+  }
+}
+
+.stepOn .dot {
+  background: var(--rose);
+  transform: scale(1.35);
+}
+
+.num {
+  font-family: var(--font-display);
+  font-size: 0.86rem;
+  letter-spacing: 0.24em;
+  color: var(--rose-soft);
+  opacity: 0.7;
+  transition: opacity var(--dur) var(--ease);
+}
+
+.stepOn .num {
+  opacity: 1;
+}
+
+.stepTitle {
+  font-size: clamp(1.5rem, 2.9vw, 2.15rem);
+  font-weight: 300;
+  font-variation-settings: 'opsz' 30;
+  margin-top: 0.4rem;
+  color: var(--on-dark-soft);
+  transition: color var(--dur) var(--ease);
+}
+
+.stepOn .stepTitle {
+  color: var(--on-dark);
+}
+
+.stepCopy {
+  margin-top: 0.75rem;
+  max-width: 44ch;
+  color: var(--on-dark-soft);
+  opacity: 0.72;
+  transition: opacity var(--dur) var(--ease), transform var(--dur-slow) var(--ease-out);
+}
+
+.stepOn .stepCopy {
+  opacity: 1;
+}
+
+[data-anim='on'] .stepCopy {
+  transform: translate3d(0, 8px, 0);
+}
+
+[data-anim='on'] .stepOn .stepCopy {
+  transform: none;
+}
+
+/* Mobile visual, stacked with the copy instead of pinned. */
+.mobileVisual {
+  position: relative;
+  margin-bottom: 1.2rem;
+  border-radius: var(--radius-m);
+  overflow: hidden;
+  border: 1px solid var(--line-dark);
+  aspect-ratio: 5 / 4;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+@media (min-width: 900px) {
+  .mobileVisual {
+    display: none;
+  }
+}
+
+.cta {
+  position: relative;
+  margin-top: clamp(2rem, 4vw, 3rem);
+  display: flex;
+  justify-content: flex-start;
+}

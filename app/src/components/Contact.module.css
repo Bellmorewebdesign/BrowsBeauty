@@ -1,0 +1,173 @@
+.section {
+  background: var(--white);
+}
+
+.grid {
+  display: grid;
+  gap: clamp(2rem, 4vw, 3.5rem);
+  align-items: start;
+}
+
+@media (min-width: 940px) {
+  .grid {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 0.92fr);
+  }
+}
+
+.title {
+  font-size: var(--step-h2);
+  font-weight: 300;
+  font-variation-settings: 'opsz' 40;
+  margin-top: 0.7rem;
+}
+
+.lead {
+  margin-top: 1rem;
+  font-size: var(--step-lead);
+  color: var(--text-soft);
+  max-width: 40ch;
+}
+
+.list {
+  display: grid;
+  gap: 1.15rem;
+  margin-top: clamp(1.8rem, 3.4vw, 2.4rem);
+}
+
+.row {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 0.9rem;
+  align-items: start;
+  padding-bottom: 1.15rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.row:last-child {
+  border-bottom: 0;
+  padding-bottom: 0;
+}
+
+.icon {
+  width: 38px;
+  height: 38px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: rgba(200, 161, 156, 0.16);
+  color: var(--rose-ink);
+}
+
+.label {
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.value {
+  margin-top: 0.2rem;
+  font-size: 1.02rem;
+  color: var(--text);
+  line-height: 1.5;
+}
+
+.value a {
+  transition: color var(--dur-fast) var(--ease);
+}
+
+.value a:hover {
+  color: var(--rose-ink);
+}
+
+.socials {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.1rem;
+  margin-top: 0.35rem;
+}
+
+.socials a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.95rem;
+}
+
+.hours {
+  color: var(--text-soft);
+  font-size: 0.97rem;
+  line-height: 1.55;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+  margin-top: clamp(1.6rem, 3vw, 2.2rem);
+}
+
+/* ---------- location card --------------------------------------------- */
+
+.card {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-l);
+  background: linear-gradient(158deg, var(--espresso) 0%, var(--espresso-2) 100%);
+  color: var(--on-dark);
+  padding: clamp(1.6rem, 3.4vw, 2.6rem);
+  min-height: clamp(300px, 42vw, 430px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.cardPattern {
+  position: absolute;
+  inset: 0;
+  color: var(--rose-soft);
+  opacity: 0.22;
+  pointer-events: none;
+}
+
+.pin {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  align-self: flex-start;
+  padding: 0.55rem 1rem;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--line-dark);
+  background: rgba(245, 239, 230, 0.09);
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.cardBody {
+  position: relative;
+}
+
+.cardAddress {
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
+  line-height: 1.18;
+  color: var(--on-dark);
+}
+
+.cardCaption {
+  margin-top: 0.6rem;
+  font-size: 0.85rem;
+  letter-spacing: 0.09em;
+  color: var(--on-dark-soft);
+}
+
+.cardActions {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
